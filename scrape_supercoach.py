@@ -22,7 +22,7 @@ if __name__ == "__main__":
   db_conn = sqlite3.connect("theprobabilities.db")
 
   # WARNING! @TODO NUKES DB
-  db_conn.execute("DELETE FROM supercoach_2012")
+  #db_conn.execute("DELETE FROM supercoach_2012")
 
   for pos in ['DEF', 'MID', 'RUC', 'FWD']:
     for player in get_players(pos):
@@ -30,33 +30,4 @@ if __name__ == "__main__":
 
   # done
   db_conn.close()
-
-def is_numeric(lit):
-  'Return value of numeric literal string or ValueError exception'
- 
-  # Handle '0'
-  if lit == '0': return 0
-  # Hex/Binary
-  litneg = lit[1:] if lit[0] == '-' else lit
-  if litneg[0] == '0':
-    if litneg[1] in 'xX':
-      return int(lit,16)
-    elif litneg[1] in 'bB':
-      return int(lit,2)
-    else:
-      try:
-        return int(lit,8)
-      except ValueError:
-        pass
- 
-  # Int/Float/Complex
-  try:
-    return int(lit)
-  except ValueError:
-    pass
-  try:
-    return float(lit)
-  except ValueError:
-    pass
-  return complex(lit)
 
