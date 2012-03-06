@@ -22,7 +22,7 @@ if __name__ == "__main__":
   db_conn = sqlite3.connect("theprobabilities.db")
 
   # WARNING! @TODO NUKES DB
-  #db_conn.execute("DELETE FROM supercoach_2012")
+  db_conn.execute("DELETE FROM supercoach_2012")
 
   for pos in ['DEF', 'MID', 'RUC', 'FWD']:
     for player in get_players(pos):
